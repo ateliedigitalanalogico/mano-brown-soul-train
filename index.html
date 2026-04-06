@@ -39,12 +39,6 @@
       </div>
     </a>
 
-    <!-- Nome do projeto -->
-    <div class="hdr-project">
-      <div class="hdr-project-name">MANO BROWN — SOUL TRAIN</div>
-      <div class="hdr-project-slug">Roteiro · Direção de Arte</div>
-    </div>
-
     <!-- Hambúrguer -->
     <button
       class="btn-menu"
@@ -69,18 +63,12 @@
 
     <span class="nav-section-label">Navegação</span>
 
-    <a class="nav-item" href="#tecnica" data-target="tecnica">Técnica</a>
-
-    <div class="nav-divider"></div>
-
-    <a class="nav-item" href="#roteiro" data-target="roteiro">Roteiro</a>
-    <a class="nav-item sub" href="#pre-intro" data-target="pre-intro">Pré Intro</a>
-    <a class="nav-item sub" href="#intro" data-target="intro">Intro</a>
-    <a class="nav-item sub" href="#cena-1" data-target="cena-1">Cena 1</a>
-    <a class="nav-item sub" href="#cena-2" data-target="cena-2">Cena 2</a>
-    <a class="nav-item sub" href="#cena-3" data-target="cena-3">Cena 3</a>
-    <a class="nav-item sub" href="#cena-4" data-target="cena-4">Cena 4</a>
-    <a class="nav-item sub" href="#cena-5" data-target="cena-5">Cena 5</a>
+    <a class="nav-item" href="#pre-intro" data-target="pre-intro">Pré Intro</a>
+    <a class="nav-item" href="#intro" data-target="intro">Intro</a>
+    <a class="nav-item" href="#cena-1" data-target="cena-1">Cena 1</a>
+    <a class="nav-item" href="#cena-2" data-target="cena-2">Cena 2</a>
+    <a class="nav-item" href="#cena-3" data-target="cena-3">Cena 3</a>
+    <a class="nav-item" href="#dj-boot" data-target="dj-boot">DJ Boot</a>
 
   </nav>
 
@@ -94,64 +82,48 @@
 
   <main class="main">
 
-
-    <!-- ======================================================
-         01 — TÉCNICA
-         ====================================================== -->
-
-    <section class="section" id="tecnica" data-section="tecnica">
-
-      <div class="section-hdr">
-        <span class="section-num">01</span>
-        <h2 class="section-title">Técnica</h2>
+    <!-- CAPA -->
+    <div class="cover">
+      <img class="cover-img" src="assets/CAPA.png" alt="Mano Brown — Soul Train">
+      <div class="cover-text">
+        <p class="cover-label">
+          <span class="cover-role">Roteiro e Direção Visual</span>
+          <span class="cover-sep">—</span>
+          <span class="cover-name">Mano Brown</span>
+          <span class="cover-sep">—</span>
+          <span class="cover-sub">Soul Train</span>
+          <span class="cover-sep">—</span>
+          <span class="cover-sub">Espaço Vibra · 17 de Abril de 2026</span>
+        </p>
       </div>
+    </div>
 
-      <!-- Placeholder: ficha técnica do show -->
-      <div class="placeholder">
-        <span class="placeholder-label">Ficha Técnica — a preencher</span>
-      </div>
+    <div class="section">
 
-      <!-- Placeholder: setup de telas / mapeamento -->
-      <div class="placeholder" style="margin-top: 16px;">
-        <span class="placeholder-label">Setup de Telas / Mapeamento — a preencher</span>
-      </div>
-
-      <!-- Placeholder: planta do palco -->
-      <div class="placeholder placeholder-img" style="margin-top: 16px;">
-        <span class="placeholder-label">Planta do Palco — a preencher</span>
-      </div>
-
-    </section>
-
-
-    <!-- ======================================================
-         02 — ROTEIRO
-         ====================================================== -->
-
-    <section class="section" id="roteiro" data-section="roteiro">
-
-      <div class="section-hdr">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Roteiro</h2>
-      </div>
-
-      <!-- --------------------------------------------------
-           2.1 — PRÉ INTRO
-           -------------------------------------------------- -->
+    <!-- --------------------------------------------------
+         PRÉ INTRO
+         -------------------------------------------------- -->
 
       <div class="subsection" id="pre-intro" data-section="pre-intro">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.1</span>
-          <h3 class="subsection-title">Pré Intro</h3>
+          
+          <h3 class="subsection-title">Pré Intro <span class="subsection-desc">— Contagem Regressiva / Censura</span></h3>
         </div>
 
-        <div class="placeholder placeholder-img">
-          <span class="placeholder-label">Visual — a preencher</span>
+        <div class="scene-desc">
+          <p>Cortina fechada. Telões da casa passam contagem regressiva e aviso de censura. Ao final, cortina abre e começa Intro.</p>
         </div>
 
-        <div class="placeholder" style="margin-top: 16px;">
-          <span class="placeholder-label">Descrição da cena — a preencher</span>
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="pre-intro" data-index="0">
+            <img src="assets/pre-intro/PRE_INTRO_CONTAGEM.png" alt="Pré Intro — Contagem" loading="lazy">
+            <span class="scene-num">01</span>
+          </div>
+          <div class="scene-item" data-group="pre-intro" data-index="1">
+            <img src="assets/pre-intro/PRE_INTRO_CENSURA.png" alt="Pré Intro — Censura" loading="lazy">
+            <span class="scene-num">02</span>
+          </div>
         </div>
 
       </div>
@@ -164,8 +136,8 @@
       <div class="subsection" id="intro" data-section="intro">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.2</span>
-          <h3 class="subsection-title">Intro</h3>
+          
+          <h3 class="subsection-title">Intro <span class="subsection-desc">— Vinheta do Show</span></h3>
         </div>
 
         <div class="scene-desc">
@@ -262,6 +234,43 @@
           </div>
         </div>
 
+        <!-- 3D Previews -->
+        <div class="inner-hdr" style="margin-top:32px">
+          <span class="subsection-num">PREVIEW 3D</span>
+        </div>
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="3d-intro" data-index="0">
+            <img src="assets/intro/3D_1.png" alt="Preview 3D Intro — 1" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-intro" data-index="1">
+            <img src="assets/intro/3D_2.png" alt="Preview 3D Intro — 2" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-intro" data-index="2">
+            <img src="assets/intro/3D_3.png" alt="Preview 3D Intro — 3" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-intro" data-index="3">
+            <img src="assets/intro/3D_4.png" alt="Preview 3D Intro — 4" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-intro" data-index="4">
+            <img src="assets/intro/3D_5.png" alt="Preview 3D Intro — 5" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Monstro WIP -->
+        <div class="inner-hdr" style="margin-top:48px">
+          <span class="subsection-num">WIP</span>
+          <h3 class="subsection-title" style="color:var(--y);opacity:.7">Monstro</h3>
+        </div>
+        <div class="obs">
+          <span class="obs-tag">WIP</span>
+          Em desenvolvimento — animações provisórias.
+        </div>
+        <div class="video-item" style="margin-top:16px">
+          <video src="assets/intro/MONSTRO_V1_APROVCAO.mp4" controls preload="none" poster="">
+          </video>
+          <span class="video-num">MONSTRO V1</span>
+        </div>
+
       </div>
 
 
@@ -272,8 +281,8 @@
       <div class="subsection" id="cena-1" data-section="cena-1">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.3</span>
-          <h3 class="subsection-title">Cena 1</h3>
+          
+          <h3 class="subsection-title">Cena 1 <span class="subsection-desc">— Funk 70's</span></h3>
         </div>
 
         <div class="scene-desc">
@@ -347,6 +356,22 @@
           </div>
         </div>
 
+        <!-- 3D Previews -->
+        <div class="inner-hdr" style="margin-top:32px">
+          <span class="subsection-num">PREVIEW 3D</span>
+        </div>
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="3d-cena1" data-index="0">
+            <img src="assets/cena1/3D_1.png" alt="Preview 3D Cena 1 — 1" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena1" data-index="1">
+            <img src="assets/cena1/3D_2.png" alt="Preview 3D Cena 1 — 2" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena1" data-index="2">
+            <img src="assets/cena1/3D_3.png" alt="Preview 3D Cena 1 — 3" loading="lazy">
+          </div>
+        </div>
+
       </div>
 
 
@@ -357,8 +382,8 @@
       <div class="subsection" id="cena-2" data-section="cena-2">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.4</span>
-          <h3 class="subsection-title">Cena 2</h3>
+          
+          <h3 class="subsection-title">Cena 2 <span class="subsection-desc">— Soul Train / Black Music</span></h3>
         </div>
 
         <div class="scene-desc">
@@ -475,6 +500,25 @@
           </div>
         </div>
 
+        <!-- 3D Previews -->
+        <div class="inner-hdr" style="margin-top:32px">
+          <span class="subsection-num">PREVIEW 3D</span>
+        </div>
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="3d-cena2" data-index="0">
+            <img src="assets/cena2/3D_1.png" alt="Preview 3D Cena 2 — 1" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena2" data-index="1">
+            <img src="assets/cena2/3D_2.png" alt="Preview 3D Cena 2 — 2" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena2" data-index="2">
+            <img src="assets/cena2/3D_3.png" alt="Preview 3D Cena 2 — 3" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena2" data-index="3">
+            <img src="assets/cena2/3D_4.png" alt="Preview 3D Cena 2 — 4" loading="lazy">
+          </div>
+        </div>
+
       </div>
 
 
@@ -485,12 +529,12 @@
       <div class="subsection" id="cena-3" data-section="cena-3">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.5</span>
-          <h3 class="subsection-title">Cena 3</h3>
+          
+          <h3 class="subsection-title">Cena 3 <span class="subsection-desc">— Afrofuturismo / Egito</span></h3>
         </div>
 
         <div class="scene-desc">
-          <p>Afrofuturismo cósmico. Túnel dimensional, glitch, Sun Ra, símbolos egípcios e figura metálica 3D compõem um universo visual de transe e ancestralidade.</p>
+          <p>Afrofuturismo cósmico e iconografia egípcia. Pirâmides, ankhs, escaravelho, Sun Ra — túnel dimensional, glitch e figura metálica 3D compõem um universo visual de transe e ancestralidade africana.</p>
         </div>
 
         <div class="slideshow" id="cena3-slideshow">
@@ -598,6 +642,22 @@
           </div>
         </div>
 
+        <!-- 3D Previews -->
+        <div class="inner-hdr" style="margin-top:32px">
+          <span class="subsection-num">PREVIEW 3D</span>
+        </div>
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="3d-cena3" data-index="0">
+            <img src="assets/cena3/3D_1.png" alt="Preview 3D Cena 3 — 1" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena3" data-index="1">
+            <img src="assets/cena3/3D_2.png" alt="Preview 3D Cena 3 — 2" loading="lazy">
+          </div>
+          <div class="scene-item" data-group="3d-cena3" data-index="2">
+            <img src="assets/cena3/3D_3.png" alt="Preview 3D Cena 3 — 3" loading="lazy">
+          </div>
+        </div>
+
       </div>
 
 
@@ -605,47 +665,44 @@
            2.6 — CENA 4
            -------------------------------------------------- -->
 
-      <div class="subsection" id="cena-4" data-section="cena-4">
-
-        <div class="subsection-hdr">
-          <span class="subsection-num">2.6</span>
-          <h3 class="subsection-title">Cena 4</h3>
-        </div>
-
-        <div class="placeholder placeholder-img">
-          <span class="placeholder-label">Visual — a preencher</span>
-        </div>
-
-        <div class="placeholder" style="margin-top: 16px;">
-          <span class="placeholder-label">Descrição da cena — a preencher</span>
-        </div>
-
-      </div>
-
-
       <!-- --------------------------------------------------
-           2.7 — CENA 5
+           2.7 — DJ BOOT
            -------------------------------------------------- -->
 
-      <div class="subsection" id="cena-5" data-section="cena-5">
+      <div class="subsection" id="dj-boot" data-section="dj-boot">
 
         <div class="subsection-hdr">
-          <span class="subsection-num">2.7</span>
-          <h3 class="subsection-title">Cena 5</h3>
+          
+          <h3 class="subsection-title">DJ Boot</h3>
         </div>
 
-        <div class="placeholder placeholder-img">
-          <span class="placeholder-label">Visual — a preencher</span>
+        <div class="scene-desc">
+          <p>Rádio Exodus. Cabine do DJ com estética de nave espacial anos 70 — madeira escura, neon, painéis analógicos e iluminação teatral disco. Conteúdo exclusivo para o painel LED 2×1,5m do DJ booth.</p>
         </div>
 
-        <div class="placeholder" style="margin-top: 16px;">
-          <span class="placeholder-label">Descrição da cena — a preencher</span>
+        <!-- Grid 2 colunas — 4:3 -->
+        <div class="scene-grid scene-grid--col2">
+          <div class="scene-item" data-group="dj-boot" data-index="0">
+            <img src="assets/dj-boot/DJ_BOOT_1.png" alt="DJ Boot — Frame 1" loading="lazy">
+            <span class="scene-num">01</span>
+          </div>
+          <div class="scene-item" data-group="dj-boot" data-index="1">
+            <img src="assets/dj-boot/DJ_BOOT_2.png" alt="DJ Boot — Frame 2" loading="lazy">
+            <span class="scene-num">02</span>
+          </div>
+          <div class="scene-item" data-group="dj-boot" data-index="2">
+            <img src="assets/dj-boot/DJ_BOOT_3.png" alt="DJ Boot — Frame 3" loading="lazy">
+            <span class="scene-num">03</span>
+          </div>
+          <div class="scene-item" data-group="dj-boot" data-index="3">
+            <img src="assets/dj-boot/DJ_BOOT_4.png" alt="DJ Boot — Frame 4" loading="lazy">
+            <span class="scene-num">04</span>
+          </div>
         </div>
 
       </div>
 
-    </section>
-
+    </div><!-- /.section -->
 
   </main>
 
@@ -661,10 +718,12 @@
         <use href="#ada-sym"/>
       </svg>
       <span class="footer-copy">ADA — Ateliê Digital Analógico</span>
+      <a href="https://ada.art.br" class="footer-link" target="_blank" rel="noopener">ada.art.br</a>
     </div>
 
     <div class="footer-meta">
       <div>MANO BROWN — SOUL TRAIN</div>
+      <div style="margin-top: 4px; color: var(--text-faint);">Caio Fazolin · Direção Visual</div>
       <div style="margin-top: 4px; color: var(--text-faint);">Confidencial · 2026</div>
     </div>
 
