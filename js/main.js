@@ -63,6 +63,7 @@
   var lightbox     = document.getElementById('lightbox');
   var lbImg        = document.getElementById('lightbox-img');
   var lbCounter    = document.getElementById('lightbox-counter');
+  var lbDownload   = document.getElementById('lightbox-download');
   var btnClose     = document.getElementById('lightbox-close');
   var btnPrev      = document.getElementById('lightbox-prev');
   var btnNext      = document.getElementById('lightbox-next');
@@ -75,6 +76,7 @@
     lbImg.src             = src;
     lbImg.alt             = alt || '';
     lbCounter.textContent = counter || '';
+    if (lbDownload) { lbDownload.href = src; }
   }
 
   function lbOpen(src, alt, counter) {
@@ -288,5 +290,146 @@
     'assets/cena1/freepik__-img1-as-the-central-element-surrounded-by-bold-19__45276.png',
     'assets/cena1/freepik__img1-as-the-central-figure-treated-as-a-bold-1970s__45277.png'
   ]);
+
+  /* ----------------------------------------------------------
+     Fullscreen genérico — carrosséis e vídeos
+     ---------------------------------------------------------- */
+
+  function goFullscreen(el) {
+    if (el.requestFullscreen)            el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.mozRequestFullScreen)    el.mozRequestFullScreen();
+  }
+
+  function exitFullscreen() {
+    if (document.exitFullscreen)            document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.mozCancelFullScreen)  document.mozCancelFullScreen();
+  }
+
+  document.querySelectorAll('.cover-carousel, .block-carousel').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (document.fullscreenElement === el || document.webkitFullscreenElement === el) {
+        exitFullscreen();
+      } else {
+        goFullscreen(el);
+      }
+    });
+  });
+
+  document.querySelectorAll('.block-video video').forEach(function (vid) {
+    vid.addEventListener('click', function () {
+      if (document.fullscreenElement === vid || document.webkitFullscreenElement === vid) {
+        exitFullscreen();
+      } else {
+        goFullscreen(vid);
+      }
+    });
+  });
+
+  /* ----------------------------------------------------------
+     Carrossel dissolve — genérico
+     Funciona para .cover-carousel e .block-carousel
+     ---------------------------------------------------------- */
+
+  function initCarousel(el, interval) {
+    var slides = el.querySelectorAll('.carousel-slide');
+    if (slides.length < 2) return;
+    var idx = 0;
+    setInterval(function () {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }, interval || 4000);
+  }
+
+  /* Cover carousel */
+  var coverEl = document.getElementById('cover-carousel');
+  if (coverEl) initCarousel(coverEl, 4000);
+
+  /* Block carousels */
+  document.querySelectorAll('.block-carousel').forEach(function (el) {
+    initCarousel(el, 2500);
+  });
+
+  /* ----------------------------------------------------------
+     Imagens soltas (.block-img) — ampliar no lightbox
+     ---------------------------------------------------------- */
+
+  document.querySelectorAll('.block-img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      lbItems = [{ src: img.src, alt: img.alt || '' }];
+      lbSlideshowMode = false;
+      lbIndex = 0;
+      lbOpen(img.src, img.alt || '', '');
+    });
+  });
+
+  /* ----------------------------------------------------------
+     Grid de download — gerado automaticamente após cada carrossel
+     ---------------------------------------------------------- */
+
+  document.querySelectorAll('.block-carousel').forEach(function (carousel) {
+    var slides = carousel.querySelectorAll('img.carousel-slide');
+    if (!slides.length) return;
+
+    var grid = document.createElement('div');
+    grid.className = 'img-grid';
+
+    var srcs = Array.prototype.map.call(slides, function(s) { return s.getAttribute('src'); });
+
+    slides.forEach(function (slide, i) {
+      var a = document.createElement('a');
+      a.className = 'img-grid-item';
+      a.href = '#';
+
+      var img = document.createElement('img');
+      img.src = slide.getAttribute('src');
+      img.alt = slide.alt || '';
+      img.loading = 'lazy';
+
+      var dl = document.createElement('div');
+      dl.className = 'img-grid-dl';
+      dl.innerHTML = '&#8599;<span>ampliar</span>';
+
+      a.appendChild(img);
+      a.appendChild(dl);
+      grid.appendChild(a);
+
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        lbItems = srcs.map(function(s) { return { src: s, alt: '' }; });
+        lbSlideshowMode = false;
+        lbIndex = i;
+        lbOpen(lbItems[lbIndex].src, '', (lbIndex + 1) + ' / ' + lbItems.length);
+      });
+    });
+
+    carousel.parentNode.insertBefore(grid, carousel.nextSibling);
+  });
+
+  /* ----------------------------------------------------------
+     Carrossel manual de vídeos
+     ---------------------------------------------------------- */
+
+  document.querySelectorAll('.block-video-carousel').forEach(function (container) {
+    var slides  = container.querySelectorAll('.bvc-slide');
+    var btnPrev = container.querySelector('.bvc-prev');
+    var btnNext = container.querySelector('.bvc-next');
+    var counter = container.querySelector('.bvc-counter');
+    var idx = 0;
+
+    function goTo(n) {
+      slides[idx].classList.remove('active');
+      slides[idx].pause();
+      idx = (n + slides.length) % slides.length;
+      slides[idx].classList.add('active');
+      slides[idx].play();
+      if (counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
+    }
+
+    btnPrev.addEventListener('click', function () { goTo(idx - 1); });
+    btnNext.addEventListener('click', function () { goTo(idx + 1); });
+  });
 
 })();

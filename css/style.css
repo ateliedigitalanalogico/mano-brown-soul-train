@@ -48,7 +48,7 @@ body {
   background: var(--void);
   color: var(--white);
   font-family: var(--syne);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -283,18 +283,71 @@ body {
    ------------------------------------------------------------ */
 
 .cover {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 48px;
 }
 
-.cover-img {
-  display: block;
+.cover-carousel,
+.block-carousel {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 80vh;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform .4s ease;
+}
+
+.cover-carousel:hover,
+.block-carousel:hover {
+  transform: scale(1.015);
+}
+
+.cover-carousel {
+  aspect-ratio: 21/9;
+}
+
+.block-carousel {
+  aspect-ratio: 21/9;
+  min-height: 420px;
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+
+/* Fullscreen — ocupa tela toda e mantém imagem centralizada */
+.cover-carousel:fullscreen,
+.block-carousel:fullscreen,
+.cover-carousel:-webkit-full-screen,
+.block-carousel:-webkit-full-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  aspect-ratio: unset;
+  width: 100vw;
+  height: 100vh;
+  cursor: zoom-out;
+}
+
+.cover-carousel:fullscreen .carousel-slide,
+.block-carousel:fullscreen .carousel-slide,
+.cover-carousel:-webkit-full-screen .carousel-slide,
+.block-carousel:-webkit-full-screen .carousel-slide {
+  object-fit: contain;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
 }
 
 .cover-text {
@@ -351,8 +404,8 @@ body {
    ------------------------------------------------------------ */
 
 .section {
-  padding: 80px 40px;
-  max-width: 960px;
+  padding: 80px 48px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -627,10 +680,161 @@ body {
   opacity: .5;
 }
 
-/* 2 colunas — exclusivo DJ Boot */
+/* 2 colunas */
 .scene-grid--col2 {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+}
+
+/* 4 colunas */
+.scene-grid--col4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Vídeo de bloco — largura total, sem controles visuais */
+.block-video {
+  margin-bottom: 32px;
+}
+
+.block-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  cursor: zoom-in;
+  transition: transform .3s ease;
+}
+
+.block-video video:hover {
+  transform: scale(1.015);
+}
+
+/* Imagens soltas — ampliar + download */
+.block-img {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 2px;
+  cursor: zoom-in;
+  transition: transform .35s ease;
+}
+
+.block-img:hover {
+  transform: scale(1.015);
+}
+
+/* Grid de download — gerado automaticamente após cada carrossel */
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: -16px;
+  margin-bottom: 32px;
+}
+
+.img-grid-item {
+  position: relative;
+  aspect-ratio: 21/9;
+  overflow: hidden;
+  display: block;
+  border-radius: 2px;
+}
+
+.img-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.img-grid-item:hover img {
+  transform: scale(1.06);
+}
+
+.img-grid-dl {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(0,0,0,.55);
+  opacity: 0;
+  transition: opacity .2s;
+  color: var(--y);
+  font-size: 22px;
+}
+
+.img-grid-dl span {
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: rgba(255,255,255,.6);
+  text-transform: uppercase;
+}
+
+.img-grid-item:hover .img-grid-dl {
+  opacity: 1;
+}
+
+/* Carrossel manual de vídeos */
+.block-video-carousel {
+  position: relative;
+  aspect-ratio: 16/9;
+  margin-bottom: 32px;
+  background: #000;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bvc-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.bvc-slide.active { opacity: 1; }
+
+.bvc-prev,
+.bvc-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+
+.bvc-prev:hover,
+.bvc-next:hover { background: rgba(0,0,0,.85); }
+
+.bvc-prev { left: 14px; }
+.bvc-next { right: 14px; }
+
+.bvc-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.5);
+  z-index: 10;
 }
 
 /* Força aspect-ratio 4:3 nas imagens do grid col2 */
@@ -758,6 +962,30 @@ body {
   font-size: 18px;
 }
 
+.lightbox-download {
+  position: fixed;
+  top: 20px;
+  right: 72px;
+  color: var(--y);
+  font-size: 13px;
+  font-family: var(--mono);
+  letter-spacing: .12em;
+  font-weight: 600;
+  background: rgba(255,214,0,.12);
+  border: 1px solid rgba(255,214,0,.35);
+  border-radius: 4px;
+  padding: 6px 14px;
+  text-decoration: none;
+  z-index: 1001;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+
+.lightbox-download:hover {
+  background: rgba(255,214,0,.25);
+  border-color: rgba(255,214,0,.7);
+}
+
 .lightbox-prev {
   left: 24px;
   top: 50%;
@@ -845,6 +1073,232 @@ body {
   color: var(--text-faint);
   text-align: right;
 }
+
+/* ------------------------------------------------------------
+   SETBLOCK + SONG ITEM
+   ------------------------------------------------------------ */
+
+.setblock {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .028);
+  border: 1px solid rgba(255, 214, 0, .08);
+  border-radius: 3px;
+  padding: 48px 56px 52px;
+  margin-bottom: 24px;
+}
+
+.setblock::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -12px;
+  bottom: -24px;
+  font-family: var(--syne);
+  font-size: 260px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 214, 0, .045);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -.02em;
+}
+
+.setblock-hdr {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--y);
+  opacity: .8;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 214, 0, .20);
+  margin-bottom: 0;
+}
+
+.song-item {
+  border-bottom: 1px solid var(--border-dim);
+  padding: 20px 0 24px;
+}
+
+.song-item--medley .song-title {
+  font-style: italic;
+}
+
+.song-hdr {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.song-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-faint);
+  width: 22px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.song-title {
+  flex: 1;
+  font-family: var(--syne);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.song-artist {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  flex-shrink: 0;
+  max-width: 280px;
+  text-align: right;
+}
+
+.song-artist--mb      { color: var(--y); }
+.song-artist--guest   { color: rgba(255,255,255,.50); }
+.song-artist--host    { color: rgba(255,255,255,.28); font-style: italic; }
+.song-artist--unknown { color: rgba(255,255,255,.16); }
+
+/* tracklist */
+
+.tracklist {
+  margin-bottom: 32px;
+}
+
+.track {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.track--medley .track-title {
+  font-style: italic;
+}
+
+.track-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-faint);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.track-title {
+  flex: 1;
+  font-family: var(--syne);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.track-artist {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .07em;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.track-artist--mb      { color: var(--y); }
+.track-artist--guest   { color: var(--y); }
+.track-artist--host    { color: var(--y); font-style: italic; }
+.track-artist--unknown { color: var(--y); }
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 1px dashed rgba(255,214,0,.15);
+  border-radius: 2px;
+  background: rgba(255,214,0,.02);
+}
+
+.placeholder span {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,214,0,.2);
+}
+
+/* ------------------------------------------------------------
+   SET LIST
+   ------------------------------------------------------------ */
+
+.setlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 24px;
+}
+
+.setlist-block {
+  margin-bottom: 40px;
+}
+
+.setlist-block-hdr {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--y);
+  opacity: .6;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.setlist-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.setlist-row--medley .setlist-title {
+  font-style: italic;
+  opacity: .85;
+}
+
+.setlist-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-faint);
+  width: 22px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.setlist-title {
+  flex: 1;
+  font-family: var(--syne);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.setlist-artist {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-align: right;
+  flex-shrink: 0;
+  max-width: 240px;
+}
+
+.setlist-artist--mb     { color: var(--y); }
+.setlist-artist--guest  { color: rgba(255,255,255,.55); }
+.setlist-artist--host   { color: rgba(255,255,255,.30); font-style: italic; }
+.setlist-artist--unknown{ color: rgba(255,255,255,.18); }
 
 /* ------------------------------------------------------------
    RESPONSIVO
