@@ -1,1 +1,17 @@
 assets/intro/SOUL_TRAIN_ABERTURA_MB_V1_Peq.mp4
+assets/intro/SOUL_TRAIN_ABERTURA_MB_V2.mp4
+assets/intro/MONSTRO_V1_APROVCAO.mp4
+index.html.tmp.*
+
+# Originais de vídeo — apenas _web e _thumb vão pro git
+assets/bloco*/*.mp4
+assets/bloco*/*/*.mp4
+!assets/bloco*/*/*_web.mp4
+!assets/bloco*/*/*_thumb.mp4
+
+# Imagens de referência — ficam no Dropbox, não no git
+assets/bloco*/*/*.png
+assets/bloco*/*/*.jpg
+assets/bloco*/*/*.jpeg
+assets/bloco*/*.png
+assets/bloco*/*.jpg

@@ -1301,6 +1301,80 @@ body {
 .setlist-artist--unknown{ color: rgba(255,255,255,.18); }
 
 /* ------------------------------------------------------------
+   VIDEO CARD — player + download actions
+   ------------------------------------------------------------ */
+
+.video-card {
+  margin-bottom: 40px;
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-dim);
+}
+
+.video-card-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.video-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--y);
+  border: 1px solid rgba(255, 214, 0, .3);
+  border-radius: 2px;
+  background: transparent;
+  transition: background .2s, border-color .2s;
+  white-space: nowrap;
+}
+
+.btn-dl:hover {
+  background: rgba(255, 214, 0, .08);
+  border-color: var(--y);
+}
+
+.btn-dl--orig {
+  color: var(--y);
+  border-color: rgba(255, 214, 0, .3);
+}
+
+.btn-dl--orig:hover {
+  background: rgba(255, 214, 0, .08);
+  border-color: var(--y);
+}
+
+/* ------------------------------------------------------------
    RESPONSIVO
    ------------------------------------------------------------ */
 
